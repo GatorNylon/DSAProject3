@@ -1,7 +1,6 @@
-.sln
+*.sln
 Debug
-.vs
-.txt
-.user
-.filters
-.vcxproj
+*.vs
+*.user
+*.filters
+*.vcxproj
