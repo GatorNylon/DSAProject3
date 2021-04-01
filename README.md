@@ -1,13 +1,19 @@
 # DSAProject3
-Cloning Code and working on Visual Studios
+Cloning Code 
 Steps
+1.Create a New Project
+2.Got to inside project folder in File Explorer
+3.Right click, select Git Bash
+4.On CLI , enter $ git init
+5.then $ git clone https://github.com/GatorNylon/DSAProject3
+6.then, $ git pull origin main
+7.then, $ git branch -m master main (change local git banch name to main from master)
 
-1.a
-Create a New Project
-Create a Main File
-Copy and Paste Existing Code
+Pulling code
+$ git pull .
 
-1.b
-Clone Code into a temp Folder
-Use the "Create Project from Existing Code Files Wizard" to create Solution File (https://github.com/MicrosoftDocs/cpp-docs/blob/master/docs/build/how-to-create-a-cpp-project-from-existing-code.md)
+Pushing Code
+$ git add .
+$ git commit .
+$ git push
 
