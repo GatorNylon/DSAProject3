@@ -1,22 +1,22 @@
 # DSAProject3
 
-Cloning Code 
+Cloning Code Steps 
 
-Steps 
+1. Create a New Project
 
-Create a New Project
+2. Got to inside project folder in File Explorer
 
-Got to inside project folder in File Explorer
+3.Right click, select Git Bash
 
-Right click, select Git Bash
+4.On CLI , enter $ git init
 
-On CLI , enter $ git init
+5.then $ git clone https://github.com/GatorNylon/DSAProject3
 
-then $ git clone https://github.com/GatorNylon/DSAProject3
+6.then, $ git pull origin main
 
-then, $ git pull origin main
+7.then, $ git branch -m master main (change local git banch name to main from master)
 
-then, $ git branch -m master main (change local git banch name to main from master)
+-----------------------------------------
 
 Pulling code
 
