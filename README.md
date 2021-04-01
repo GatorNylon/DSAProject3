@@ -6,15 +6,15 @@ Cloning Code Steps
 
 2. Got to inside project folder in File Explorer
 
-3.Right click, select Git Bash
+3. Right click, select Git Bash
 
-4.On CLI , enter $ git init
+4. On CLI , enter $ git init
 
-5.then $ git clone https://github.com/GatorNylon/DSAProject3
+5. then $ git clone https://github.com/GatorNylon/DSAProject3
 
-6.then, $ git pull origin main
+6. then, $ git pull origin main
 
-7.then, $ git branch -m master main (change local git banch name to main from master)
+7. then, $ git branch -m master main (change local git banch name to main from master)
 
 -----------------------------------------
 
