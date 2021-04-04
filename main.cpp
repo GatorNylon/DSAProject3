@@ -1,6 +1,8 @@
 #include <iostream>
+#include "Emissions.h"
+#include "ShellSort.h"
 using namespace std;
-// include data-strcture class files
+// include data-structure class files
 
 
 int main()
