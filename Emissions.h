@@ -24,6 +24,19 @@ public:
         this->totalReleases = totalReleases;
     }
 
+    //added for testing sorting
+    //=============================================
+    Emissions ( double totalReleases) {
+        this->totalReleases = totalReleases;
+    }
+
+    bool greaterThan(Emissions a, Emissions b)
+    {
+        return (a.getTotalReleases() > b.getTotalReleases());
+    }
+    //=============================================
+
+
     string getFacilityName() {
         return facilityName;
     }
