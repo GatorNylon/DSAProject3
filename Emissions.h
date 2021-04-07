@@ -30,10 +30,14 @@ public:
         this->totalReleases = totalReleases;
     }
 
-    bool greaterThan(Emissions a, Emissions b)
-    {
-        return (a.getTotalReleases() > b.getTotalReleases());
+    Emissions (string state) {
+        this->state = state;
     }
+
+    /*bool lessThan_totalRelease(Emissions a, Emissions b)
+    {
+        return (a.getTotalReleases() < b.getTotalReleases());
+    }*/
     //=============================================
 
 
