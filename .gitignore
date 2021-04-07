@@ -1,5 +1,6 @@
 *.sln
 Debug
+packages
 *.vs
 *.user
 *.filters
