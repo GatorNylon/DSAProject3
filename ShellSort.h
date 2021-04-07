@@ -28,9 +28,9 @@ void Shellsort(vector<int> &ve)
 		int cur_pos = 0;
 		while(cur_pos < ve.size() and cur_pos + gap < ve.size()) // swap elements as long as they are both in container
 		{
-			if (ve[cur_pos + gap] < ve[cur_pos]) // if following element is greater than previous element
+			if (ve[cur_pos + gap] < ve[cur_pos]) // if following element is less than previous element
 			{
-				swap(ve, cur_pos , cur_pos + gap);
+				swap(ve, cur_pos , cur_pos + gap); // swap them
 
 				//check if the preceding elements up to the current element are still in order after swap
 				// ----------------------------------------
@@ -53,8 +53,9 @@ void Shellsort(vector<int> &ve)
 
 // not tested yet
 // greater need to be a function defined in Emmisions Class
-void Shellsort(vector<Emissions>& ve, function<bool(int a, int b)> greater)
+vector<Emissions> Shellsort(const vector<Emissions> v, function<bool(Emissions, Emissions)> lessThan)
 {
+	vector<Emissions> ve = v;
 	int gap = ve.size() / 2;
 
 	while (gap > 0)
@@ -62,18 +63,18 @@ void Shellsort(vector<Emissions>& ve, function<bool(int a, int b)> greater)
 		int cur_pos = 0;
 		while (cur_pos < ve.size() and cur_pos + gap < ve.size()) // swap elements as long as they are both in container
 		{
-			if (greater(cur_pos + gap, cur_pos)) // if following element is greater than previous element
+			if (lessThan(ve[cur_pos + gap], ve[cur_pos])) // if following element is less than previous element
 			{
-				swap(ve, cur_pos, cur_pos + gap);
+				swap(ve, cur_pos, cur_pos + gap);// swap them
 
 				//check if the preceding elements up to the current element are still in order after swap
 				// ----------------------------------------
 				int prev_pos = 0;
 				while (prev_pos < cur_pos and prev_pos + gap < ve.size())
 				{
-					if (greater(prev_pos + gap, prev_pos))
+					if (lessThan(ve[prev_pos + gap], ve[prev_pos]))
 					{
-						swap(ve, prev_pos, prev_pos + gap);
+						swap(ve, prev_pos, prev_pos + gap); 
 					}
 					prev_pos++;
 				}
@@ -83,23 +84,37 @@ void Shellsort(vector<Emissions>& ve, function<bool(int a, int b)> greater)
 		}
 		gap = gap / 2;
 	}
+	return ve;
 }
 
-void test_Shellsort_int()
+
+
+bool lessThan_totalRelease(Emissions a, Emissions b)
 {
-	vector<int> ve = { 7 , 4 , 9 , 3 , 2 , 8 , 6 , 5 };
-	 
-	cout << "Initial Input :";
-	for (int i : ve)
-		cout << i << " ";
-	cout << endl;
+	return (a.getTotalReleases() < b.getTotalReleases());
+}
 
-	Shellsort(ve);
+bool lessThan_state(Emissions a, Emissions b)
+{
+	int val = a.getState().compare(b.getState());
+	if (val < 0)
+		return true;
+	else
+		return false;
+}
 
-	cout << "Sorted Output :";
-	for (int i : ve)
-		cout << i << " ";
-	cout << endl << endl;
+bool lessThan_zipCode(Emissions a, Emissions b)
+{
+	return (a.getZip() < b.getZip());
+}
+
+bool lessThan_Chemical(Emissions a, Emissions b)
+{
+	int val = a.getChemical().compare(b.getChemical());
+	if (val < 0)
+		return true;
+	else
+		return false;
 }
 
 void test_Shellsort_Emissions()
@@ -113,6 +128,7 @@ void test_Shellsort_Emissions()
 	ve.push_back(Emissions(8));
 	ve.push_back(Emissions(6));
 	ve.push_back(Emissions(5));
+	ve.push_back(Emissions(4));
 
 
 	cout << "Initial Input :";
@@ -120,10 +136,54 @@ void test_Shellsort_Emissions()
 		cout << i.getTotalReleases() << " ";
 	cout << endl;
 
-	//Shellsort(ve, Emissions::greaterThan); // need to fix this 
+	auto sorted = Shellsort(ve, lessThan_totalRelease); // need to fix this 
 
 	cout << "Sorted Output :";
-	for (auto i : ve)
+	for (auto i : sorted)
 		cout << i.getTotalReleases() << " ";
+	cout << endl << endl;
+}
+
+void test_Shellsort_State()
+{
+	vector<Emissions> ve; 
+	ve.push_back(Emissions("Florida"));
+	ve.push_back(Emissions("California"));
+	ve.push_back(Emissions("Utah"));
+	ve.push_back(Emissions("Michigan"));
+	ve.push_back(Emissions("New York"));
+	ve.push_back(Emissions("New Jersey"));
+	ve.push_back(Emissions("Missouri"));
+	ve.push_back(Emissions("Arkansas"));
+	
+
+
+	cout << "Initial Input :";
+	for (auto i : ve)
+		cout << i.getState() << " ";
+	cout << endl;
+
+	auto sorted = Shellsort(ve, lessThan_state); // need to fix this 
+
+	cout << "Sorted Output :";
+	for (auto i : sorted)
+		cout << i.getState() << " ";
+	cout << endl << endl;
+}
+
+void test_Shellsort_int()
+{
+	vector<int> ve = { 7 , 4 , 9 , 3 , 2 , 8 , 6 , 5 };
+
+	cout << "Initial Input :";
+	for (int i : ve)
+		cout << i << " ";
+	cout << endl;
+
+	Shellsort(ve);
+
+	cout << "Sorted Output :";
+	for (int i : ve)
+		cout << i << " ";
 	cout << endl << endl;
 }
