@@ -24,7 +24,7 @@ int partition(vector<Emissions>& emissionData, int low, int high, int type) {
             }
 
             else if (type == 2) {
-                if (emissionData[up].getZip().compare(pivot.getZip()) > 0) {
+                if (emissionData[up].getZip() > pivot.getZip()) {
                     break;
                 }
                 up++;
@@ -54,7 +54,7 @@ int partition(vector<Emissions>& emissionData, int low, int high, int type) {
             }
 
             else if (type == 2) {
-                if (emissionData[down].getZip().compare(pivot.getZip()) <= 0) {
+                if (emissionData[down].getZip() <= pivot.getZip()) {
                     break;
                 }
                 down--;
