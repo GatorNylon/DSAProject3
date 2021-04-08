@@ -17,7 +17,7 @@ Emissions breakString(string line) {
     string streetAddress;
     string city;
     string state;
-    string zip;
+    int zip;
     string industrySector;
     string chemical;
     double totalReleases;
@@ -36,8 +36,19 @@ Emissions breakString(string line) {
     getline(fullString, partialString, ',');
     state = partialString;
 
-    getline(fullString, partialString, ',');
-    zip = partialString;
+    try {
+        getline(fullString, partialString, ',');
+        zip = stoi(partialString);
+
+        if (zip < 0) {
+            throw 1;
+        }
+    }
+    catch (exception& excpt) {
+        zip = 0;
+    }
+
+
 
     getline(fullString, partialString, ',');
     industrySector = partialString;
@@ -71,132 +82,374 @@ void readFile(string FileName, vector<Emissions>& emissionData) {
         while (getline(File, line)) {
             emissionData.push_back(breakString(line));
         }
-       
+
     }
+    File.close();
 }
 
-void writeFile(string filename, vector<Emissions>& sortedData) { //This function needs fixing. Working on that
+void writeFile(vector<Emissions>& sortedData, string filename) {
     ofstream myFile;
 
-    myFile.open("quickSortData.csv");
+    myFile.open("Sorted/" + filename);
     if (!myFile) {
         cout << "Error: File not Created" << endl;
     }
 
     else {
-        cout << "File created successfully!" << endl;
-        cout << sortedData.size();
-
         myFile << "Facility Name" << ',' << "Street Address" << "," << "City" << ',' << "State" << ',' << "Zip" << ',' << "IndustrySector" << ',' << "Chemical Name" << ',' << "Total Release" << endl;
         for (int i = 0; i < sortedData.size(); i++) {
-            if (i == 603) {
-                cout << "Here after 603";
-            }
-            //cout << sortedData[1000].getFacilityName()  << endl;
             myFile << sortedData[i].getFacilityName() << ','
-                   << sortedData[i].getStreetAddress() << ','
-                   << sortedData[i].getCity() << ','
-                   << sortedData[i].getState() << ',' 
-                   << sortedData[i].getZip() << ',' 
-                   << sortedData[i].getIndustrySector() << ',' 
-                   << sortedData[i].getChemical() << ',' 
-                   << sortedData[i].getTotalReleases() << endl;
+                << sortedData[i].getStreetAddress() << ','
+                << sortedData[i].getCity() << ','
+                << sortedData[i].getState() << ','
+                << sortedData[i].getZip() << ','
+                << sortedData[i].getIndustrySector() << ','
+                << sortedData[i].getChemical() << ','
+                << sortedData[i].getTotalReleases() << endl;
         }
         myFile.close();
     }
 }
 
-void printFile(vector<Emissions>& emissionData) {
-    for (int i = 0; i < emissionData.size(); i++) {
-         
-        cout << "Facility Name: " << emissionData[i].getFacilityName() << endl
-             << "Street Address: " << emissionData[i].getStreetAddress() << endl 
-             << "City: " << emissionData[i].getCity() << endl 
-             << "State: " << emissionData[i].getState() << endl 
-             << "Zip: " << emissionData[i].getZip() << endl 
-             << "Industry Sector: " << emissionData[i].getIndustrySector() << endl 
-             << "Chemical Name: " << emissionData[i].getChemical() << endl 
-             << "Total Release: " << emissionData[i].getTotalReleases() << endl << endl; 
-    }
-}
-
-
 
 int main()
 {
     int year, option;
+
+    //p = 4 (types of sorting)
+    //q = 4(types of fields to be sorted)
+    //r = 4 (number of data volumnes) 
+
+    /*======= Vector Declarations =======*/
+
+    //Quick Sort for 250 Size
     vector<Emissions> emissionData;
-    vector<Emissions> quickSortData;
+    vector<Emissions> qS_States_250;
+    vector<Emissions> qS_Zip_250;
+    vector<Emissions> qS_City_250;
+    vector<Emissions> qS_Amount_250;
 
-    
-   
+    //Quick Sort for 500 Size
+    vector<Emissions> qS_States_500;
+    vector<Emissions> qS_Zip_500;
+    vector<Emissions> qS_City_500;
+    vector<Emissions> qS_Amount_500;
 
-    cout << "Welcome to EmmissionSort!" << endl;
+    //Quick Sort for 750 Size
+    vector<Emissions> qS_States_750;
+    vector<Emissions> qS_Zip_750;
+    vector<Emissions> qS_City_750;
+    vector<Emissions> qS_Amount_750;
+
+    //Quick Sort for 1000 Size
+    vector<Emissions> qS_States_1000;
+    vector<Emissions> qS_Zip_1000;
+    vector<Emissions> qS_City_1000;
+    vector<Emissions> qS_Amount_1000;
+
+
+
+    /*======= Main Program Starts Here =======*/
+    cout << "//==========Welcome to EmmissionSort!==========//" << endl;
+    cout << endl;
     cout << "Select from one of the following years: " << endl
         << "1. 2019" << endl << "2. 2018" << endl;
 
+    cout << endl;
+    cout << "Year Option: ";
     cin >> year;
 
-    /*======= Load data from file(s) =======*/
+    /*======= Load data from main file(s) =======*/
     if (year == 1)
         readFile("Test2.csv", emissionData);
     else
         readFile("2018.csv", emissionData);
 
+    /*======= Load data from main vectors into sub vectors depending on sizes =======*/
 
-   //How to only copy certain rows .. can i do for (int i = 0; i < 5000; i++).. something like this ?
-    quickSortData = emissionData;
+    for (int i = 0; i < 250; i++) {
 
-    writeFile("quickSortData.csv", quickSortData);
+        //Quick Sort Vectors
+        qS_States_250.push_back(emissionData[i]);
+        qS_Zip_250.push_back(emissionData[i]);
+        qS_City_250.push_back(emissionData[i]);
+        qS_Amount_250.push_back(emissionData[i]);
 
+        //Heap Sort Vectors
+        //Merge Sort Vectors
+        //Shell Sort Vectors
+    }
+
+    for (int i = 0; i < 500; i++) {
+
+        //Quick Sort Vectors
+        qS_States_500.push_back(emissionData[i]);
+        qS_Zip_500.push_back(emissionData[i]);
+        qS_City_500.push_back(emissionData[i]);
+        qS_Amount_500.push_back(emissionData[i]);
+
+
+        //Heap Sort Vectors
+        //Merge Sort Vectors
+        //Shell Sort Vectors
+    }
+
+    for (int i = 0; i < 750; i++) {
+
+        //Quick Sort Vectors
+        qS_States_750.push_back(emissionData[i]);
+        qS_Zip_750.push_back(emissionData[i]);
+        qS_City_750.push_back(emissionData[i]);
+        qS_Amount_750.push_back(emissionData[i]);
+
+        //Heap Sort Vectors
+        //Merge Sort Vectors
+        //Shell Sort Vectors
+    }
+
+    for (int i = 0; i < 1000; i++) {
+
+        //Quick Sort Vectors
+        qS_States_1000.push_back(emissionData[i]);
+        qS_Zip_1000.push_back(emissionData[i]);
+        qS_City_1000.push_back(emissionData[i]);
+        qS_Amount_1000.push_back(emissionData[i]);
+
+        //Heap Sort Vectors
+        //Merge Sort Vectors
+        //Shell Sort Vectors
+    }
+
+    /*======= Sorting Options =======*/
     cout << endl << "Sort By: " << endl
         << "1. State " << endl
         << "2. Zip Code" << endl
         << "3. City" << endl
         << "4. Emmisions Amount" << endl;
+    cout << endl;
+    cout << "Sort Option: ";
     cin >> option;
+    cout << endl;
+
+
 
     switch (option)
     {
 
+        /*======= Case 1: Sorting by State =======*/
     case(1):
-    {auto start = high_resolution_clock::now();
-    quickSort(quickSortData, 0, quickSortData.size() - 1, 1);
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
-   // printFile(quickSortData);
-   // writeFile("quickSortData.csv", quickSortData);
-    cout << "Time taken to Quick Sort Emission Data: " << duration.count() << endl; }
-        break;
+        cout << "//**********Sorting by State**********//" << endl;
+        cout << endl;
+
+        //---------Sorting times for data size 250 ----------------//
+        cout << "----------Sorting times for data size 250----------" << endl;
+
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_States_250, 0, qS_States_250.size() - 1, 1);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_States_250, "qS_States_250.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+        //---------Sorting times for data size 500 ----------------//
+        cout << "----------Sorting times for data size 500----------" << endl;
+
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_States_500, 0, qS_States_500.size() - 1, 1);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_States_500, "qS_States_500.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+        //---------Sorting times for data size 750 ----------------//
+        cout << "----------Sorting times for data size 750----------" << endl;
+
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_States_750, 0, qS_States_750.size() - 1, 1);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_States_750, "qS_States_750.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+        //---------Sorting times for data size 1000 ----------------//
+        cout << "----------Sorting times for data size 1000----------" << endl;
+
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_States_1000, 0, qS_States_1000.size() - 1, 1);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_States_1000, "qS_States_1000.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+        break; //Must be after all of the sorting algorithms have been inserted here
+
+
+
+        /*======= Case 2: Sorting by Zip Code =======*/
+
 
     case(2):
-    {auto start = high_resolution_clock::now();
-    quickSort(emissionData, 0, emissionData.size() - 1, 2);
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
-    // printFile(emissionData);
-    cout << "Time taken to Quick Sort Emission Data: " << duration.count() << endl; }
-        break;
 
+        cout << "//**********Sorting by Zip Code**********//" << endl;
+        cout << endl;
+
+        //---------Sorting times for data size 250 ----------------//
+        cout << "----------Sorting times for data size 250----------" << endl;
+
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_Zip_250, 0, qS_Zip_250.size() - 1, 2);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_Zip_250, "qS_Zip_250.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+        //---------Sorting times for data size 500 ----------------//
+        cout << "----------Sorting times for data size 500----------" << endl;
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_Zip_500, 0, qS_Zip_500.size() - 1, 2);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_Zip_500, "qS_Zip_500.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+        //---------Sorting times for data size 750 ----------------//
+        cout << "----------Sorting times for data size 750----------" << endl;
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_Zip_750, 0, qS_Zip_750.size() - 1, 2);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_Zip_750, "qS_Zip_750.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+        //---------Sorting times for data size 1000 ----------------//
+        cout << "----------Sorting times for data size 750----------" << endl;
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_Zip_1000, 0, qS_Zip_1000.size() - 1, 2);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_Zip_1000, "qS_Zip_1000.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+
+        break; //Must be after all of the sorting algorithms have been inserted here
+
+
+
+        /*======= Case 3: Sorting by City =======*/
     case(3):
-    { auto start = high_resolution_clock::now();
-    quickSort(emissionData, 0, emissionData.size() - 1, 3);
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
-    // printFile(emissionData);
-    cout << "Time taken to Quick Sort Emission Data: " << duration.count() << endl; }
-        break;
+        cout << "//**********Sorting by City**********//" << endl;
+        cout << endl;
 
+        //---------Sorting times for data size 250 ----------------//
+        cout << "----------Sorting times for data size 250----------" << endl;
+
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_City_250, 0, qS_City_250.size() - 1, 3);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_City_250, "qS_City_250.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+        //---------Sorting times for data size 500 ----------------//
+        cout << "----------Sorting times for data size 500----------" << endl;
+
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_City_500, 0, qS_City_500.size() - 1, 3);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_City_500, "qS_City_500.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+        //---------Sorting times for data size 750 ----------------//
+        cout << "----------Sorting times for data size 750----------" << endl;
+
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_City_750, 0, qS_City_750.size() - 1, 3);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_City_750, "qS_City_750.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+        //---------Sorting times for data size 1000 ----------------//
+        cout << "----------Sorting times for data size 1000----------" << endl;
+
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_City_1000, 0, qS_City_1000.size() - 1, 3);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_City_1000, "qS_City_1000.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+
+        break; //Must be after all of the sorting algorithms have been inserted here
+
+
+
+        /*======= Case 4: Sorting by Emission Amount =======*/
     case(4):
-    { auto start = high_resolution_clock::now();
-    quickSort(emissionData, 0, emissionData.size() - 1, 4);
-    auto stop = high_resolution_clock::now();
-    auto duration = duration_cast<microseconds>(stop - start);
-    //printFile(emissionData);
-    cout << "Time taken to Quick Sort Emission Data: " << duration.count() << endl; }
-        break;
+        cout << "//**********Sorting by Emission Amount**********//" << endl;
+        cout << endl;
+
+        //---------Sorting times for data size 250 ----------------//
+        cout << "----------Sorting times for data size 250----------" << endl;
+
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_Amount_250, 0, qS_Amount_250.size() - 1, 4);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_Amount_250, "qS_Amount_250.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+        //---------Sorting times for data size 500 ----------------//
+        cout << "----------Sorting times for data size 500----------" << endl;
+
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_Amount_500, 0, qS_Amount_500.size() - 1, 4);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_Amount_500, "qS_Amount_500.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+        //---------Sorting times for data size 750 ----------------//
+        cout << "----------Sorting times for data size 750----------" << endl;
+
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_Amount_750, 0, qS_Amount_750.size() - 1, 4);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_Amount_750, "qS_Amount_750.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+        //---------Sorting times for data size 1000 ----------------//
+        cout << "----------Sorting times for data size 1000----------" << endl;
+
+        {auto start = high_resolution_clock::now();
+        quickSort(qS_Amount_1000, 0, qS_Amount_1000.size() - 1, 4);
+        auto stop = high_resolution_clock::now();
+        auto duration = duration_cast<microseconds>(stop - start);
+        writeFile(qS_Amount_1000, "qS_Amount_1000.csv");
+        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+        cout << endl;
+
+
+        break; //Must be after all of the sorting algorithms have been inserted here
 
     default:
         break;
-    } 
+    }
 }
