@@ -7,13 +7,13 @@ class Emissions {
     string streetAddress;
     string city;
     string state;
-    string zip;
+    int zip;
     string industrySector;
     string chemical;
     double totalReleases;
 
 public:
-    Emissions(string facilityName, string streetAddress, string city, string state, string zip, string industrySector, string chemical, double totalReleases) {
+    Emissions(string facilityName, string streetAddress, string city, string state, int zip, string industrySector, string chemical, double totalReleases) {
         this->facilityName = facilityName;
         this->streetAddress = streetAddress;
         this->city = city;
@@ -57,7 +57,7 @@ public:
         return state;
     }
 
-    string getZip() {
+    int getZip() {
         return zip;
     }
 
