@@ -115,6 +115,7 @@ void writeFile(vector<Emissions>& sortedData, string filename) {
 int main()
 {
     int year, option;
+    bool check = true;
 
     //p = 4 (types of sorting)
     //q = 4(types of fields to be sorted)
@@ -220,236 +221,242 @@ int main()
         //Shell Sort Vectors
     }
 
-    /*======= Sorting Options =======*/
-    cout << endl << "Sort By: " << endl
-        << "1. State " << endl
-        << "2. Zip Code" << endl
-        << "3. City" << endl
-        << "4. Emmisions Amount" << endl;
-    cout << endl;
-    cout << "Sort Option: ";
-    cin >> option;
-    cout << endl;
+    while (check == true) {
 
-
-
-    switch (option)
-    {
-
-        /*======= Case 1: Sorting by State =======*/
-    case(1):
-        cout << "//**********Sorting by State**********//" << endl;
+        /*======= Sorting Options =======*/
+        cout << endl << "Sort By: " << endl
+            << "1. State " << endl
+            << "2. Zip Code" << endl
+            << "3. City" << endl
+            << "4. Emmisions Amount" << endl
+            << "5. Exit" << endl;
+        cout << endl;
+        cout << "Sort Option: ";
+        cin >> option;
         cout << endl;
 
-        //---------Sorting times for data size 250 ----------------//
-        cout << "----------Sorting times for data size 250----------" << endl;
+        switch (option)
+        {
 
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_States_250, 0, qS_States_250.size() - 1, 1);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_States_250, "qS_States_250.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
+            /*======= Case 1: Sorting by State =======*/
+        case(1):
+            cout << "//**********Sorting by State**********//" << endl;
+            cout << endl;
 
-        //---------Sorting times for data size 500 ----------------//
-        cout << "----------Sorting times for data size 500----------" << endl;
+            //---------Sorting times for data size 250 ----------------//
+            cout << "----------Sorting times for data size 250----------" << endl;
 
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_States_500, 0, qS_States_500.size() - 1, 1);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_States_500, "qS_States_500.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_States_250, 0, qS_States_250.size() - 1, 1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_States_250, "qS_States_250.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
 
-        //---------Sorting times for data size 750 ----------------//
-        cout << "----------Sorting times for data size 750----------" << endl;
+            //---------Sorting times for data size 500 ----------------//
+            cout << "----------Sorting times for data size 500----------" << endl;
 
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_States_750, 0, qS_States_750.size() - 1, 1);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_States_750, "qS_States_750.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_States_500, 0, qS_States_500.size() - 1, 1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_States_500, "qS_States_500.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
 
-        //---------Sorting times for data size 1000 ----------------//
-        cout << "----------Sorting times for data size 1000----------" << endl;
+            //---------Sorting times for data size 750 ----------------//
+            cout << "----------Sorting times for data size 750----------" << endl;
 
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_States_1000, 0, qS_States_1000.size() - 1, 1);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_States_1000, "qS_States_1000.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_States_750, 0, qS_States_750.size() - 1, 1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_States_750, "qS_States_750.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
 
-        break; //Must be after all of the sorting algorithms have been inserted here
+            //---------Sorting times for data size 1000 ----------------//
+            cout << "----------Sorting times for data size 1000----------" << endl;
 
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_States_1000, 0, qS_States_1000.size() - 1, 1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_States_1000, "qS_States_1000.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
 
-
-        /*======= Case 2: Sorting by Zip Code =======*/
-
-
-    case(2):
-
-        cout << "//**********Sorting by Zip Code**********//" << endl;
-        cout << endl;
-
-        //---------Sorting times for data size 250 ----------------//
-        cout << "----------Sorting times for data size 250----------" << endl;
-
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_Zip_250, 0, qS_Zip_250.size() - 1, 2);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_Zip_250, "qS_Zip_250.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
-
-        //---------Sorting times for data size 500 ----------------//
-        cout << "----------Sorting times for data size 500----------" << endl;
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_Zip_500, 0, qS_Zip_500.size() - 1, 2);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_Zip_500, "qS_Zip_500.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
-
-        //---------Sorting times for data size 750 ----------------//
-        cout << "----------Sorting times for data size 750----------" << endl;
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_Zip_750, 0, qS_Zip_750.size() - 1, 2);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_Zip_750, "qS_Zip_750.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
-
-        //---------Sorting times for data size 1000 ----------------//
-        cout << "----------Sorting times for data size 750----------" << endl;
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_Zip_1000, 0, qS_Zip_1000.size() - 1, 2);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_Zip_1000, "qS_Zip_1000.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
-
-
-        break; //Must be after all of the sorting algorithms have been inserted here
+            break; //Must be after all of the sorting algorithms have been inserted here
 
 
 
-        /*======= Case 3: Sorting by City =======*/
-    case(3):
-        cout << "//**********Sorting by City**********//" << endl;
-        cout << endl;
-
-        //---------Sorting times for data size 250 ----------------//
-        cout << "----------Sorting times for data size 250----------" << endl;
-
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_City_250, 0, qS_City_250.size() - 1, 3);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_City_250, "qS_City_250.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
-
-        //---------Sorting times for data size 500 ----------------//
-        cout << "----------Sorting times for data size 500----------" << endl;
-
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_City_500, 0, qS_City_500.size() - 1, 3);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_City_500, "qS_City_500.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
-
-        //---------Sorting times for data size 750 ----------------//
-        cout << "----------Sorting times for data size 750----------" << endl;
-
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_City_750, 0, qS_City_750.size() - 1, 3);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_City_750, "qS_City_750.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
-
-        //---------Sorting times for data size 1000 ----------------//
-        cout << "----------Sorting times for data size 1000----------" << endl;
-
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_City_1000, 0, qS_City_1000.size() - 1, 3);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_City_1000, "qS_City_1000.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
+            /*======= Case 2: Sorting by Zip Code =======*/
 
 
-        break; //Must be after all of the sorting algorithms have been inserted here
+        case(2):
+
+            cout << "//**********Sorting by Zip Code**********//" << endl;
+            cout << endl;
+
+            //---------Sorting times for data size 250 ----------------//
+            cout << "----------Sorting times for data size 250----------" << endl;
+
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_Zip_250, 0, qS_Zip_250.size() - 1, 2);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_Zip_250, "qS_Zip_250.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
+
+            //---------Sorting times for data size 500 ----------------//
+            cout << "----------Sorting times for data size 500----------" << endl;
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_Zip_500, 0, qS_Zip_500.size() - 1, 2);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_Zip_500, "qS_Zip_500.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
+
+            //---------Sorting times for data size 750 ----------------//
+            cout << "----------Sorting times for data size 750----------" << endl;
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_Zip_750, 0, qS_Zip_750.size() - 1, 2);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_Zip_750, "qS_Zip_750.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
+
+            //---------Sorting times for data size 1000 ----------------//
+            cout << "----------Sorting times for data size 750----------" << endl;
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_Zip_1000, 0, qS_Zip_1000.size() - 1, 2);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_Zip_1000, "qS_Zip_1000.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
+
+
+            break; //Must be after all of the sorting algorithms have been inserted here
 
 
 
-        /*======= Case 4: Sorting by Emission Amount =======*/
-    case(4):
-        cout << "//**********Sorting by Emission Amount**********//" << endl;
-        cout << endl;
+            /*======= Case 3: Sorting by City =======*/
+        case(3):
+            cout << "//**********Sorting by City**********//" << endl;
+            cout << endl;
 
-        //---------Sorting times for data size 250 ----------------//
-        cout << "----------Sorting times for data size 250----------" << endl;
+            //---------Sorting times for data size 250 ----------------//
+            cout << "----------Sorting times for data size 250----------" << endl;
 
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_Amount_250, 0, qS_Amount_250.size() - 1, 4);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_Amount_250, "qS_Amount_250.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_City_250, 0, qS_City_250.size() - 1, 3);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_City_250, "qS_City_250.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
 
-        //---------Sorting times for data size 500 ----------------//
-        cout << "----------Sorting times for data size 500----------" << endl;
+            //---------Sorting times for data size 500 ----------------//
+            cout << "----------Sorting times for data size 500----------" << endl;
 
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_Amount_500, 0, qS_Amount_500.size() - 1, 4);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_Amount_500, "qS_Amount_500.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_City_500, 0, qS_City_500.size() - 1, 3);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_City_500, "qS_City_500.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
 
-        //---------Sorting times for data size 750 ----------------//
-        cout << "----------Sorting times for data size 750----------" << endl;
+            //---------Sorting times for data size 750 ----------------//
+            cout << "----------Sorting times for data size 750----------" << endl;
 
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_Amount_750, 0, qS_Amount_750.size() - 1, 4);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_Amount_750, "qS_Amount_750.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_City_750, 0, qS_City_750.size() - 1, 3);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_City_750, "qS_City_750.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
 
-        //---------Sorting times for data size 1000 ----------------//
-        cout << "----------Sorting times for data size 1000----------" << endl;
+            //---------Sorting times for data size 1000 ----------------//
+            cout << "----------Sorting times for data size 1000----------" << endl;
 
-        {auto start = high_resolution_clock::now();
-        quickSort(qS_Amount_1000, 0, qS_Amount_1000.size() - 1, 4);
-        auto stop = high_resolution_clock::now();
-        auto duration = duration_cast<microseconds>(stop - start);
-        writeFile(qS_Amount_1000, "qS_Amount_1000.csv");
-        cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
-        cout << endl;
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_City_1000, 0, qS_City_1000.size() - 1, 3);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_City_1000, "qS_City_1000.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
 
 
-        break; //Must be after all of the sorting algorithms have been inserted here
+            break; //Must be after all of the sorting algorithms have been inserted here
 
-    default:
-        break;
+
+
+            /*======= Case 4: Sorting by Emission Amount =======*/
+        case(4):
+            cout << "//**********Sorting by Emission Amount**********//" << endl;
+            cout << endl;
+
+            //---------Sorting times for data size 250 ----------------//
+            cout << "----------Sorting times for data size 250----------" << endl;
+
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_Amount_250, 0, qS_Amount_250.size() - 1, 4);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_Amount_250, "qS_Amount_250.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
+
+            //---------Sorting times for data size 500 ----------------//
+            cout << "----------Sorting times for data size 500----------" << endl;
+
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_Amount_500, 0, qS_Amount_500.size() - 1, 4);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_Amount_500, "qS_Amount_500.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
+
+            //---------Sorting times for data size 750 ----------------//
+            cout << "----------Sorting times for data size 750----------" << endl;
+
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_Amount_750, 0, qS_Amount_750.size() - 1, 4);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_Amount_750, "qS_Amount_750.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
+
+            //---------Sorting times for data size 1000 ----------------//
+            cout << "----------Sorting times for data size 1000----------" << endl;
+
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_Amount_1000, 0, qS_Amount_1000.size() - 1, 4);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_Amount_1000, "qS_Amount_1000.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+            cout << endl;
+
+
+            break; //Must be after all of the sorting algorithms have been inserted here
+
+        case(5):
+            check = false;
+            break;
+
+        default:
+            break;
+        }
     }
 }
