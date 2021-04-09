@@ -8,6 +8,7 @@
 #include <chrono>
 #include "QuickSort.h"
 #include "Emissions.h"
+#include "ShellSort.h"
 using namespace std;
 using namespace std::chrono;
 
@@ -68,7 +69,7 @@ Emissions breakString(string line) {
         totalReleases = 0.0;
     }
 
-    Emissions dataObject(facilityName, streetAddress, city, state, zip, industrySector, chemical, totalReleases);
+    Emissions dataObject( facilityName, streetAddress, city, state, zip, industrySector, chemical, totalReleases);
     return dataObject;
 }
 
@@ -130,11 +131,21 @@ int main()
     vector<Emissions> qS_City_250;
     vector<Emissions> qS_Amount_250;
 
+    vector<Emissions> shell_States_250;
+    vector<Emissions> shell_Zip_250;
+    vector<Emissions> shell_City_250;
+    vector<Emissions> shell_Amount_250;
+
     //Quick Sort for 500 Size
     vector<Emissions> qS_States_500;
     vector<Emissions> qS_Zip_500;
     vector<Emissions> qS_City_500;
     vector<Emissions> qS_Amount_500;
+
+    vector<Emissions> shell_States_500;
+    vector<Emissions> shell_Zip_500;
+    vector<Emissions> shell_City_500;
+    vector<Emissions> shell_Amount_500;
 
     //Quick Sort for 750 Size
     vector<Emissions> qS_States_750;
@@ -142,11 +153,21 @@ int main()
     vector<Emissions> qS_City_750;
     vector<Emissions> qS_Amount_750;
 
+    vector<Emissions> shell_States_750;
+    vector<Emissions> shell_Zip_750;
+    vector<Emissions> shell_City_750;
+    vector<Emissions> shell_Amount_750;
+
     //Quick Sort for 1000 Size
     vector<Emissions> qS_States_1000;
     vector<Emissions> qS_Zip_1000;
     vector<Emissions> qS_City_1000;
     vector<Emissions> qS_Amount_1000;
+
+    vector<Emissions> shell_States_1000;
+    vector<Emissions> shell_Zip_1000;
+    vector<Emissions> shell_City_1000;
+    vector<Emissions> shell_Amount_1000;
 
 
 
@@ -179,6 +200,10 @@ int main()
         //Heap Sort Vectors
         //Merge Sort Vectors
         //Shell Sort Vectors
+        shell_States_250.push_back(emissionData[i]);
+        shell_Zip_250.push_back(emissionData[i]);
+        shell_City_250.push_back(emissionData[i]);
+        shell_Amount_250.push_back(emissionData[i]);
     }
 
     for (int i = 0; i < 500; i++) {
@@ -193,6 +218,11 @@ int main()
         //Heap Sort Vectors
         //Merge Sort Vectors
         //Shell Sort Vectors
+        shell_States_500.push_back(emissionData[i]);
+        shell_Zip_500.push_back(emissionData[i]);
+        shell_City_500.push_back(emissionData[i]);
+        shell_Amount_500.push_back(emissionData[i]);
+
     }
 
     for (int i = 0; i < 750; i++) {
@@ -206,6 +236,10 @@ int main()
         //Heap Sort Vectors
         //Merge Sort Vectors
         //Shell Sort Vectors
+        shell_States_750.push_back(emissionData[i]);
+        shell_Zip_750.push_back(emissionData[i]);
+        shell_City_750.push_back(emissionData[i]);
+        shell_Amount_750.push_back(emissionData[i]);
     }
 
     for (int i = 0; i < 1000; i++) {
@@ -219,6 +253,10 @@ int main()
         //Heap Sort Vectors
         //Merge Sort Vectors
         //Shell Sort Vectors
+        shell_States_1000.push_back(emissionData[i]);
+        shell_Zip_1000.push_back(emissionData[i]);
+        shell_City_1000.push_back(emissionData[i]);
+        shell_Amount_1000.push_back(emissionData[i]);
     }
 
     while (check == true) {
@@ -252,6 +290,14 @@ int main()
             auto duration = duration_cast<microseconds>(stop - start);
             writeFile(qS_States_250, "qS_States_250.csv");
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_States_250, lessThan_state);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_States_250, "shell_States_250.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
+
             cout << endl;
 
             //---------Sorting times for data size 500 ----------------//
@@ -263,6 +309,14 @@ int main()
             auto duration = duration_cast<microseconds>(stop - start);
             writeFile(qS_States_500, "qS_States_500.csv");
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_States_500, lessThan_state);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_States_500, "shell_States_500.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
+
             cout << endl;
 
             //---------Sorting times for data size 750 ----------------//
@@ -274,6 +328,14 @@ int main()
             auto duration = duration_cast<microseconds>(stop - start);
             writeFile(qS_States_750, "qS_States_750.csv");
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_States_750, lessThan_state);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_States_750, "shell_States_1000.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
+
             cout << endl;
 
             //---------Sorting times for data size 1000 ----------------//
@@ -286,6 +348,13 @@ int main()
             writeFile(qS_States_1000, "qS_States_1000.csv");
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
             cout << endl;
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_States_1000, lessThan_state);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_States_1000, "shell_States_1000.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
 
             break; //Must be after all of the sorting algorithms have been inserted here
 
@@ -310,6 +379,13 @@ int main()
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
             cout << endl;
 
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_Zip_250, lessThan_zipCode);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_Zip_250, "shell_Zip_250.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
+
             //---------Sorting times for data size 500 ----------------//
             cout << "----------Sorting times for data size 500----------" << endl;
             {auto start = high_resolution_clock::now();
@@ -319,6 +395,13 @@ int main()
             writeFile(qS_Zip_500, "qS_Zip_500.csv");
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
             cout << endl;
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_Zip_500, lessThan_zipCode);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_Zip_500, "shell_Zip_500.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
 
             //---------Sorting times for data size 750 ----------------//
             cout << "----------Sorting times for data size 750----------" << endl;
@@ -330,6 +413,13 @@ int main()
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
             cout << endl;
 
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_Zip_750, lessThan_zipCode);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_Zip_750, "shell_Zip_750.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
+
             //---------Sorting times for data size 1000 ----------------//
             cout << "----------Sorting times for data size 750----------" << endl;
             {auto start = high_resolution_clock::now();
@@ -338,6 +428,14 @@ int main()
             auto duration = duration_cast<microseconds>(stop - start);
             writeFile(qS_Zip_1000, "qS_Zip_1000.csv");
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_Zip_1000, lessThan_zipCode);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_Zip_1000, "shell_Zip_1000.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
+
             cout << endl;
 
 
@@ -359,6 +457,14 @@ int main()
             auto duration = duration_cast<microseconds>(stop - start);
             writeFile(qS_City_250, "qS_City_250.csv");
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_City_250, lessThan_City);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_City_250, "shell_City_250.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
+
             cout << endl;
 
             //---------Sorting times for data size 500 ----------------//
@@ -372,6 +478,13 @@ int main()
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
             cout << endl;
 
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_City_500, lessThan_City);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_City_500, "shell_City_500.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
+
             //---------Sorting times for data size 750 ----------------//
             cout << "----------Sorting times for data size 750----------" << endl;
 
@@ -383,6 +496,13 @@ int main()
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
             cout << endl;
 
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_City_750, lessThan_City);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_City_750, "shell_City_750.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
+
             //---------Sorting times for data size 1000 ----------------//
             cout << "----------Sorting times for data size 1000----------" << endl;
 
@@ -392,6 +512,14 @@ int main()
             auto duration = duration_cast<microseconds>(stop - start);
             writeFile(qS_City_1000, "qS_City_1000.csv");
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_City_1000, lessThan_City);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_City_1000, "shell_City_1000.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
+
             cout << endl;
 
 
@@ -413,6 +541,14 @@ int main()
             auto duration = duration_cast<microseconds>(stop - start);
             writeFile(qS_Amount_250, "qS_Amount_250.csv");
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_Amount_250, lessThan_totalRelease);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_Amount_250, "shell_Amount_250.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
+
             cout << endl;
 
             //---------Sorting times for data size 500 ----------------//
@@ -424,6 +560,14 @@ int main()
             auto duration = duration_cast<microseconds>(stop - start);
             writeFile(qS_Amount_500, "qS_Amount_500.csv");
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_Amount_250, lessThan_totalRelease);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_Amount_500, "shell_Amount_500.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
+
             cout << endl;
 
             //---------Sorting times for data size 750 ----------------//
@@ -435,6 +579,14 @@ int main()
             auto duration = duration_cast<microseconds>(stop - start);
             writeFile(qS_Amount_750, "qS_Amount_750.csv");
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_Amount_750, lessThan_totalRelease);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_Amount_750, "shell_Amount_750.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
+
             cout << endl;
 
             //---------Sorting times for data size 1000 ----------------//
@@ -446,6 +598,14 @@ int main()
             auto duration = duration_cast<microseconds>(stop - start);
             writeFile(qS_Amount_1000, "qS_Amount_1000.csv");
             cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl; }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_Amount_1000, lessThan_totalRelease);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_Amount_1000, "shell_Amount_1000.csv");
+            cout << "2. Shell Sort: " << duration.count() << " microseconds" << endl; }
+
             cout << endl;
 
 
