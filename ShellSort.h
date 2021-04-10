@@ -141,10 +141,10 @@ void test_Shellsort_Emissions()
 		cout << i.getTotalReleases() << " ";
 	cout << endl;
 
-	auto sorted = Shellsort(ve, lessThan_totalRelease); // need to fix this 
+	Shellsort(ve, lessThan_totalRelease); // need to fix this 
 
 	cout << "Sorted Output :";
-	for (auto i : sorted)
+	for (auto i : ve)
 		cout << i.getTotalReleases() << " ";
 	cout << endl << endl;
 }
@@ -168,10 +168,10 @@ void test_Shellsort_State()
 		cout << i.getState() << " ";
 	cout << endl;
 
-	auto sorted = Shellsort(ve, lessThan_state); // need to fix this 
+	Shellsort(ve, lessThan_state); // need to fix this 
 
 	cout << "Sorted Output :";
-	for (auto i : sorted)
+	for (auto i : ve)
 		cout << i.getState() << " ";
 	cout << endl << endl;
 }
