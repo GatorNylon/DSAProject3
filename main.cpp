@@ -1128,10 +1128,15 @@ int main()
         }
         
         if (option < 5 && option > 0) {
-            plt::plot(yNumDataQuickSort, xTimeTakenQuickSort);
-            plt::plot(yNumDataHeapSort, xTimeTakenHeapSort);
-            plt::plot(yNumDataMergeSort, xTimeTakenMergeSort);
-            plt::plot(yNumDataShellSort, xTimeTakenShellSort);
+            plt::plot(xTimeTakenQuickSort, yNumDataQuickSort);
+            plt::named_plot("Quick Sort", xTimeTakenQuickSort, yNumDataQuickSort);
+            plt::plot(xTimeTakenHeapSort, yNumDataHeapSort, "b-");
+            plt::named_plot("Heap Sort", xTimeTakenHeapSort, yNumDataHeapSort, "b-");
+            plt::plot(xTimeTakenMergeSort, yNumDataMergeSort);
+            plt::named_plot("Merge Sort", xTimeTakenMergeSort, yNumDataMergeSort);
+            plt::plot(xTimeTakenShellSort, yNumDataShellSort, "g-");
+            plt::named_plot("Shell Sort", xTimeTakenShellSort, yNumDataShellSort, "g-");
+            plt::legend();
             string nameOfTest;
             string nameFile;
             switch (option) {
