@@ -6,12 +6,6 @@
 using namespace std;
 
 
-void swap(vector<Emissions>& ve, int pos_a, int pos_b)
-{
-	auto temp = ve[pos_b];
-	ve[pos_b] = ve[pos_a];
-	ve[pos_a] = temp;
-}
 
 void Shellsort(vector<Emissions>& ve, function<bool(Emissions, Emissions)> lessThan)
 {
@@ -19,71 +13,25 @@ void Shellsort(vector<Emissions>& ve, function<bool(Emissions, Emissions)> lessT
 
 	while (gap > 0)
 	{
-		int cur_pos = 0;
-		while (cur_pos < ve.size() and cur_pos + gap < ve.size()) // swap elements as long as they are both in container
-		{
-			if (lessThan(ve[cur_pos + gap], ve[cur_pos])) // if following element is less than previous element
-			{
-				swap(ve, cur_pos, cur_pos + gap);// swap them
-
-				//check if the preceding elements up to the current element are still in order after swap
-				// ----------------------------------------
-				int prev_pos = 0;
-				while (prev_pos < cur_pos and prev_pos + gap < ve.size())
-				{
-					if (lessThan(ve[prev_pos + gap], ve[prev_pos]))
-					{
-						swap(ve, prev_pos, prev_pos + gap); 
-					}
-					prev_pos++;
-				}
-				// ---------------------------------------
+		int cur_pos = gap;
+		while (cur_pos < ve.size())
+		{ //insertion sort
+			auto cur_pos_val = ve[cur_pos];
+			int prev_pos = cur_pos;
+			
+			while (prev_pos >= gap && lessThan(cur_pos_val, ve[prev_pos - gap]))
+			{ // find smallest element of for inserstion of cur_pos_val
+				ve[prev_pos] = ve[prev_pos - gap];	//ve[prev_pos] shifted in list with gaps
+				prev_pos -= gap; 
 			}
-			cur_pos++;
+
+			ve[prev_pos] = cur_pos_val; // swap
+			cur_pos += 1;
 		}
-		gap = gap / 2;
+		gap /= 2;
 	}
 }
 
-
-//Misc...
-void swap(vector<int>& ve, int pos_a, int pos_b)
-{
-	int temp = ve[pos_b];
-	ve[pos_b] = ve[pos_a];
-	ve[pos_a] = temp;
-}
-void Shellsort(vector<int>& ve)
-{
-	int gap = ve.size() / 2;
-
-	while (gap > 0)
-	{
-		int cur_pos = 0;
-		while (cur_pos < ve.size() and cur_pos + gap < ve.size()) // swap elements as long as they are both in container
-		{
-			if (ve[cur_pos + gap] < ve[cur_pos]) // if following element is less than previous element
-			{
-				swap(ve, cur_pos, cur_pos + gap); // swap them
-
-				//check if the preceding elements up to the current element are still in order after swap
-				// ----------------------------------------
-				int prev_pos = 0;
-				while (prev_pos < cur_pos and prev_pos + gap < ve.size())
-				{
-					if (ve[prev_pos + gap] < ve[prev_pos])
-					{
-						swap(ve, prev_pos, prev_pos + gap);
-					}
-					prev_pos++;
-				}
-				// ---------------------------------------
-			}
-			cur_pos++;
-		}
-		gap = gap / 2;
-	}
-}
 
 bool lessThan_totalRelease(Emissions a, Emissions b)
 {
@@ -132,6 +80,8 @@ void test_Shellsort_Emissions()
 	ve.push_back(Emissions(2));
 	ve.push_back(Emissions(8));
 	ve.push_back(Emissions(6));
+	ve.push_back(Emissions(7));
+	ve.push_back(Emissions(7));
 	ve.push_back(Emissions(5));
 	ve.push_back(Emissions(4));
 
@@ -141,7 +91,7 @@ void test_Shellsort_Emissions()
 		cout << i.getTotalReleases() << " ";
 	cout << endl;
 
-	Shellsort(ve, lessThan_totalRelease); // need to fix this 
+	Shellsort(ve, lessThan_totalRelease); 
 
 	cout << "Sorted Output :";
 	for (auto i : ve)
@@ -176,19 +126,3 @@ void test_Shellsort_State()
 	cout << endl << endl;
 }
 
-void test_Shellsort_int()
-{
-	vector<int> ve = { 7 , 4 , 9 , 3 , 2 , 8 , 6 , 5 };
-
-	cout << "Initial Input :";
-	for (int i : ve)
-		cout << i << " ";
-	cout << endl;
-
-	Shellsort(ve);
-
-	cout << "Sorted Output :";
-	for (int i : ve)
-		cout << i << " ";
-	cout << endl << endl;
-}
