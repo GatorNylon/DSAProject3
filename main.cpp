@@ -1157,8 +1157,8 @@ int main()
                 break;
             }
             plt::title("Emissions Sort - " + nameOfTest);
-            plt::xlabel("Time (microseconds)");
-            plt::ylabel("Data Size");
+            plt::xlabel("Data Size");
+            plt::ylabel("Time (microseconds)");
             plt::save(nameFile);
             plt::show();
         }
