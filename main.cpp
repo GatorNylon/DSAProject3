@@ -17,7 +17,7 @@ using namespace std;
 using namespace std::chrono;
 
 
-Emissions breakString(string line) {
+Emissions breakString(string line) {  //Helper Function that takes a line from the excel file, breaks it into the respective attributes, and pushes the data a vector object of type Emissions
     string facilityName;
     string streetAddress;
     string city;
@@ -78,7 +78,7 @@ Emissions breakString(string line) {
 }
 
 
-void readFile(string FileName, vector<Emissions>& emissionData) {
+void readFile(string FileName, vector<Emissions>& emissionData) { //Function to read a line from the excel file and sends it to the breakString Function for further processing
     string line;
     ifstream File(FileName);
 
@@ -92,7 +92,7 @@ void readFile(string FileName, vector<Emissions>& emissionData) {
     File.close();
 }
 
-void writeFile(vector<Emissions>& sortedData, string filename) {
+void writeFile(vector<Emissions>& sortedData, string filename) { //Function that writes the sorted data into files. File name is generated in main and is based on sorting algorithm name, sorting attribute and size
     ofstream myFile;
 
     myFile.open("Sorted/" + filename);
@@ -123,76 +123,14 @@ int main()
     bool check = true;
 
     //p = 4 (types of sorting)
-    //q = 4(types of fields to be sorted)
-    //r = 4 (number of data volumnes)
+   //q = 4(types of fields to be sorted)
+  //r = 4 (number of data volumnes)
+ //Total number of vectors used = 64
 
     /*======= Vector Declarations =======*/
 
-    //Quick Sort for 250 Size
-    vector<Emissions> emissionData;
-    vector<Emissions> qS_States_250;
-    vector<Emissions> qS_Zip_250;
-    vector<Emissions> qS_City_250;
-    vector<Emissions> qS_Amount_250;
-
-    vector<Emissions> heap_States_250;
-    vector<Emissions> heap_Zip_250;
-    vector<Emissions> heap_City_250;
-    vector<Emissions> heap_Amount_250;
-
-    vector<Emissions> merge_States_250;
-    vector<Emissions> merge_Zip_250;
-    vector<Emissions> merge_City_250;
-    vector<Emissions> merge_Amount_250;
-
-    vector<Emissions> shell_States_250;
-    vector<Emissions> shell_Zip_250;
-    vector<Emissions> shell_City_250;
-    vector<Emissions> shell_Amount_250;
-
-    //Quick Sort for 500 Size
-    vector<Emissions> qS_States_500;
-    vector<Emissions> qS_Zip_500;
-    vector<Emissions> qS_City_500;
-    vector<Emissions> qS_Amount_500;
-
-    vector<Emissions> heap_States_500;
-    vector<Emissions> heap_Zip_500;
-    vector<Emissions> heap_City_500;
-    vector<Emissions> heap_Amount_500;
-
-    vector<Emissions> merge_States_500;
-    vector<Emissions> merge_Zip_500;
-    vector<Emissions> merge_City_500;
-    vector<Emissions> merge_Amount_500;
-
-    vector<Emissions> shell_States_500;
-    vector<Emissions> shell_Zip_500;
-    vector<Emissions> shell_City_500;
-    vector<Emissions> shell_Amount_500;
-
-    //Quick Sort for 750 Size
-    vector<Emissions> qS_States_750;
-    vector<Emissions> qS_Zip_750;
-    vector<Emissions> qS_City_750;
-    vector<Emissions> qS_Amount_750;
-
-    vector<Emissions> heap_States_750;
-    vector<Emissions> heap_Zip_750;
-    vector<Emissions> heap_City_750;
-    vector<Emissions> heap_Amount_750;
-
-    vector<Emissions> merge_States_750;
-    vector<Emissions> merge_Zip_750;
-    vector<Emissions> merge_City_750;
-    vector<Emissions> merge_Amount_750;
-
-    vector<Emissions> shell_States_750;
-    vector<Emissions> shell_Zip_750;
-    vector<Emissions> shell_City_750;
-    vector<Emissions> shell_Amount_750;
-
     //Quick Sort for 1000 Size
+    vector<Emissions> emissionData;
     vector<Emissions> qS_States_1000;
     vector<Emissions> qS_Zip_1000;
     vector<Emissions> qS_City_1000;
@@ -212,6 +150,69 @@ int main()
     vector<Emissions> shell_Zip_1000;
     vector<Emissions> shell_City_1000;
     vector<Emissions> shell_Amount_1000;
+
+    //Quick Sort for 10000 Size
+    vector<Emissions> qS_States_10000;
+    vector<Emissions> qS_Zip_10000;
+    vector<Emissions> qS_City_10000;
+    vector<Emissions> qS_Amount_10000;
+
+    vector<Emissions> heap_States_10000;
+    vector<Emissions> heap_Zip_10000;
+    vector<Emissions> heap_City_10000;
+    vector<Emissions> heap_Amount_10000;
+
+    vector<Emissions> merge_States_10000;
+    vector<Emissions> merge_Zip_10000;
+    vector<Emissions> merge_City_10000;
+    vector<Emissions> merge_Amount_10000;
+
+    vector<Emissions> shell_States_10000;
+    vector<Emissions> shell_Zip_10000;
+    vector<Emissions> shell_City_10000;
+    vector<Emissions> shell_Amount_10000;
+
+    //Quick Sort for 30000 Size
+    vector<Emissions> qS_States_30000;
+    vector<Emissions> qS_Zip_30000;
+    vector<Emissions> qS_City_30000;
+    vector<Emissions> qS_Amount_30000;
+
+    vector<Emissions> heap_States_30000;
+    vector<Emissions> heap_Zip_30000;
+    vector<Emissions> heap_City_30000;
+    vector<Emissions> heap_Amount_30000;
+
+    vector<Emissions> merge_States_30000;
+    vector<Emissions> merge_Zip_30000;
+    vector<Emissions> merge_City_30000;
+    vector<Emissions> merge_Amount_30000;
+
+    vector<Emissions> shell_States_30000;
+    vector<Emissions> shell_Zip_30000;
+    vector<Emissions> shell_City_30000;
+    vector<Emissions> shell_Amount_30000;
+
+    //Quick Sort for FullSize Size
+    vector<Emissions> qS_States_FullSize;
+    vector<Emissions> qS_Zip_FullSize;
+    vector<Emissions> qS_City_FullSize;
+    vector<Emissions> qS_Amount_FullSize;
+
+    vector<Emissions> heap_States_FullSize;
+    vector<Emissions> heap_Zip_FullSize;
+    vector<Emissions> heap_City_FullSize;
+    vector<Emissions> heap_Amount_FullSize;
+
+    vector<Emissions> merge_States_FullSize;
+    vector<Emissions> merge_Zip_FullSize;
+    vector<Emissions> merge_City_FullSize;
+    vector<Emissions> merge_Amount_FullSize;
+
+    vector<Emissions> shell_States_FullSize;
+    vector<Emissions> shell_Zip_FullSize;
+    vector<Emissions> shell_City_FullSize;
+    vector<Emissions> shell_Amount_FullSize;
 
 
 
@@ -233,89 +234,7 @@ int main()
 
     /*======= Load data from main vectors into sub vectors depending on sizes =======*/
 
-    for (int i = 0; i < 5000; i++) {
-
-        //Quick Sort Vectors
-        qS_States_250.push_back(emissionData[i]);
-        qS_Zip_250.push_back(emissionData[i]);
-        qS_City_250.push_back(emissionData[i]);
-        qS_Amount_250.push_back(emissionData[i]);
-
-        //Heap Sort Vectors
-        heap_States_250.push_back(emissionData[i]);
-        heap_Zip_250.push_back(emissionData[i]);
-        heap_City_250.push_back(emissionData[i]);
-        heap_Amount_250.push_back(emissionData[i]);
-
-        //Merge Sort Vectors
-        merge_States_250.push_back(emissionData[i]);
-        merge_Zip_250.push_back(emissionData[i]);
-        merge_City_250.push_back(emissionData[i]);
-        merge_Amount_250.push_back(emissionData[i]);
-
-        //Shell Sort Vectors
-        shell_States_250.push_back(emissionData[i]);
-        shell_Zip_250.push_back(emissionData[i]);
-        shell_City_250.push_back(emissionData[i]);
-        shell_Amount_250.push_back(emissionData[i]);
-    }
-
-    for (int i = 0; i < 15000; i++) {
-
-        //Quick Sort Vectors
-        qS_States_500.push_back(emissionData[i]);
-        qS_Zip_500.push_back(emissionData[i]);
-        qS_City_500.push_back(emissionData[i]);
-        qS_Amount_500.push_back(emissionData[i]);
-
-        //Heap Sort Vectors
-        heap_States_500.push_back(emissionData[i]);
-        heap_Zip_500.push_back(emissionData[i]);
-        heap_City_500.push_back(emissionData[i]);
-        heap_Amount_500.push_back(emissionData[i]);
-
-        //Merge Sort Vectors
-        merge_States_500.push_back(emissionData[i]);
-        merge_Zip_500.push_back(emissionData[i]);
-        merge_City_500.push_back(emissionData[i]);
-        merge_Amount_500.push_back(emissionData[i]);
-
-        //Shell Sort Vectors
-        shell_States_500.push_back(emissionData[i]);
-        shell_Zip_500.push_back(emissionData[i]);
-        shell_City_500.push_back(emissionData[i]);
-        shell_Amount_500.push_back(emissionData[i]);
-
-    }
-
-    for (int i = 0; i < 30000; i++) {
-
-        //Quick Sort Vectors
-        qS_States_750.push_back(emissionData[i]);
-        qS_Zip_750.push_back(emissionData[i]);
-        qS_City_750.push_back(emissionData[i]);
-        qS_Amount_750.push_back(emissionData[i]);
-
-        //Heap Sort Vectors
-        heap_States_750.push_back(emissionData[i]);
-        heap_Zip_750.push_back(emissionData[i]);
-        heap_City_750.push_back(emissionData[i]);
-        heap_Amount_750.push_back(emissionData[i]);
-
-        //Merge Sort Vectors
-        merge_States_750.push_back(emissionData[i]);
-        merge_Zip_750.push_back(emissionData[i]);
-        merge_City_750.push_back(emissionData[i]);
-        merge_Amount_750.push_back(emissionData[i]);
-
-        //Shell Sort Vectors
-        shell_States_750.push_back(emissionData[i]);
-        shell_Zip_750.push_back(emissionData[i]);
-        shell_City_750.push_back(emissionData[i]);
-        shell_Amount_750.push_back(emissionData[i]);
-    }
-
-    for (int i = 0; i < emissionData.size(); i++) {
+    for (int i = 0; i < 1000; i++) {
 
         //Quick Sort Vectors
         qS_States_1000.push_back(emissionData[i]);
@@ -340,6 +259,88 @@ int main()
         shell_Zip_1000.push_back(emissionData[i]);
         shell_City_1000.push_back(emissionData[i]);
         shell_Amount_1000.push_back(emissionData[i]);
+    }
+
+    for (int i = 0; i < 10000; i++) {
+
+        //Quick Sort Vectors
+        qS_States_10000.push_back(emissionData[i]);
+        qS_Zip_10000.push_back(emissionData[i]);
+        qS_City_10000.push_back(emissionData[i]);
+        qS_Amount_10000.push_back(emissionData[i]);
+
+        //Heap Sort Vectors
+        heap_States_10000.push_back(emissionData[i]);
+        heap_Zip_10000.push_back(emissionData[i]);
+        heap_City_10000.push_back(emissionData[i]);
+        heap_Amount_10000.push_back(emissionData[i]);
+
+        //Merge Sort Vectors
+        merge_States_10000.push_back(emissionData[i]);
+        merge_Zip_10000.push_back(emissionData[i]);
+        merge_City_10000.push_back(emissionData[i]);
+        merge_Amount_10000.push_back(emissionData[i]);
+
+        //Shell Sort Vectors
+        shell_States_10000.push_back(emissionData[i]);
+        shell_Zip_10000.push_back(emissionData[i]);
+        shell_City_10000.push_back(emissionData[i]);
+        shell_Amount_10000.push_back(emissionData[i]);
+
+    }
+
+    for (int i = 0; i < 30000; i++) {
+
+        //Quick Sort Vectors
+        qS_States_30000.push_back(emissionData[i]);
+        qS_Zip_30000.push_back(emissionData[i]);
+        qS_City_30000.push_back(emissionData[i]);
+        qS_Amount_30000.push_back(emissionData[i]);
+
+        //Heap Sort Vectors
+        heap_States_30000.push_back(emissionData[i]);
+        heap_Zip_30000.push_back(emissionData[i]);
+        heap_City_30000.push_back(emissionData[i]);
+        heap_Amount_30000.push_back(emissionData[i]);
+
+        //Merge Sort Vectors
+        merge_States_30000.push_back(emissionData[i]);
+        merge_Zip_30000.push_back(emissionData[i]);
+        merge_City_30000.push_back(emissionData[i]);
+        merge_Amount_30000.push_back(emissionData[i]);
+
+        //Shell Sort Vectors
+        shell_States_30000.push_back(emissionData[i]);
+        shell_Zip_30000.push_back(emissionData[i]);
+        shell_City_30000.push_back(emissionData[i]);
+        shell_Amount_30000.push_back(emissionData[i]);
+    }
+
+    for (int i = 0; i < emissionData.size(); i++) {
+
+        //Quick Sort Vectors
+        qS_States_FullSize.push_back(emissionData[i]);
+        qS_Zip_FullSize.push_back(emissionData[i]);
+        qS_City_FullSize.push_back(emissionData[i]);
+        qS_Amount_FullSize.push_back(emissionData[i]);
+
+        //Heap Sort Vectors
+        heap_States_FullSize.push_back(emissionData[i]);
+        heap_Zip_FullSize.push_back(emissionData[i]);
+        heap_City_FullSize.push_back(emissionData[i]);
+        heap_Amount_FullSize.push_back(emissionData[i]);
+
+        //Merge Sort Vectors
+        merge_States_FullSize.push_back(emissionData[i]);
+        merge_Zip_FullSize.push_back(emissionData[i]);
+        merge_City_FullSize.push_back(emissionData[i]);
+        merge_Amount_FullSize.push_back(emissionData[i]);
+
+        //Shell Sort Vectors
+        shell_States_FullSize.push_back(emissionData[i]);
+        shell_Zip_FullSize.push_back(emissionData[i]);
+        shell_City_FullSize.push_back(emissionData[i]);
+        shell_Amount_FullSize.push_back(emissionData[i]);
     }
 
     while (check == true) {
@@ -377,180 +378,180 @@ int main()
             cout << "//**********Sorting by State**********//" << endl;
             cout << endl;
 
-            //---------Sorting times for data size 250 ----------------//
-            cout << "----------Sorting times for data size 250----------" << endl;
-
-            {auto start = high_resolution_clock::now();
-            quickSort(qS_States_250, 0, qS_States_250.size() - 1, 1);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(qS_States_250, "qS_States_250.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataQuickSort.push_back(250);
-            xTimeTakenQuickSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            heapSort(heap_States_250, heap_States_250.size(), 1);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(heap_States_250, "heap_States_250.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataHeapSort.push_back(250);
-            xTimeTakenHeapSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            mergeSort(merge_States_250, 0, merge_States_250.size() - 1, 1);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(merge_States_250, "merge_States_250.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataMergeSort.push_back(250);
-            xTimeTakenMergeSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            Shellsort(shell_States_250, lessThan_state);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(shell_States_250, "shell_States_250.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataShellSort.push_back(250);
-            xTimeTakenShellSort.push_back(duration.count());
-            }
-
-            cout << endl;
-
-            //---------Sorting times for data size 500 ----------------//
-            cout << "----------Sorting times for data size 500----------" << endl;
-
-            {auto start = high_resolution_clock::now();
-            quickSort(qS_States_500, 0, qS_States_500.size() - 1, 1);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(qS_States_500, "qS_States_500.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataQuickSort.push_back(15000);
-            xTimeTakenQuickSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            heapSort(heap_States_500, heap_States_500.size(), 1);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(heap_States_500, "heap_States_500.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataHeapSort.push_back(15000);
-            xTimeTakenHeapSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            mergeSort(merge_States_500, 0, merge_States_500.size() - 1, 1);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(merge_States_500, "merge_States_500.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataMergeSort.push_back(15000);
-            xTimeTakenMergeSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            Shellsort(shell_States_500, lessThan_state);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(shell_States_500, "shell_States_500.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataShellSort.push_back(15000);
-            xTimeTakenShellSort.push_back(duration.count());
-            }
-
-            cout << endl;
-
-            //---------Sorting times for data size 750 ----------------//
-            cout << "----------Sorting times for data size 750----------" << endl;
-
-            {auto start = high_resolution_clock::now();
-            quickSort(qS_States_750, 0, qS_States_750.size() - 1, 1);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(qS_States_750, "qS_States_750.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataQuickSort.push_back(30000);
-            xTimeTakenQuickSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            heapSort(heap_States_750, heap_States_750.size(), 1);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(heap_States_750, "heap_States_750.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataHeapSort.push_back(30000);
-            xTimeTakenHeapSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            mergeSort(merge_States_750, 0, merge_States_750.size() - 1, 1);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(merge_States_750, "merge_States_750.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataMergeSort.push_back(30000);
-            xTimeTakenMergeSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            Shellsort(shell_States_750, lessThan_state);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(shell_States_750, "shell_States_1000.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataShellSort.push_back(30000);
-            xTimeTakenShellSort.push_back(duration.count());
-            }
-
-            cout << endl;
-
             //---------Sorting times for data size 1000 ----------------//
             cout << "----------Sorting times for data size 1000----------" << endl;
 
             {auto start = high_resolution_clock::now();
             quickSort(qS_States_1000, 0, qS_States_1000.size() - 1, 1);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(qS_States_1000, "qS_States_1000.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataQuickSort.push_back(emissionData.size());
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataQuickSort.push_back(1000);
             xTimeTakenQuickSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
             heapSort(heap_States_1000, heap_States_1000.size(), 1);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(heap_States_1000, "heap_States_1000.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataHeapSort.push_back(emissionData.size());
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataHeapSort.push_back(1000);
             xTimeTakenHeapSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
             mergeSort(merge_States_1000, 0, merge_States_1000.size() - 1, 1);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(merge_States_1000, "merge_States_1000.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataMergeSort.push_back(emissionData.size());
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataMergeSort.push_back(1000);
             xTimeTakenMergeSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
             Shellsort(shell_States_1000, lessThan_state);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(shell_States_1000, "shell_States_1000.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataShellSort.push_back(1000);
+            xTimeTakenShellSort.push_back(duration.count());
+            }
+
+            cout << endl;
+
+            //---------Sorting times for data size 10000 ----------------//
+            cout << "----------Sorting times for data size 10000----------" << endl;
+
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_States_10000, 0, qS_States_10000.size() - 1, 1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_States_10000, "qS_States_10000.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataQuickSort.push_back(10000);
+            xTimeTakenQuickSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            heapSort(heap_States_10000, heap_States_10000.size(), 1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(heap_States_10000, "heap_States_10000.csv");
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataHeapSort.push_back(10000);
+            xTimeTakenHeapSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            mergeSort(merge_States_10000, 0, merge_States_10000.size() - 1, 1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(merge_States_10000, "merge_States_10000.csv");
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataMergeSort.push_back(10000);
+            xTimeTakenMergeSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_States_10000, lessThan_state);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_States_10000, "shell_States_10000.csv");
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataShellSort.push_back(10000);
+            xTimeTakenShellSort.push_back(duration.count());
+            }
+
+            cout << endl;
+
+            //---------Sorting times for data size 30000 ----------------//
+            cout << "----------Sorting times for data size 30000----------" << endl;
+
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_States_30000, 0, qS_States_30000.size() - 1, 1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_States_30000, "qS_States_30000.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataQuickSort.push_back(30000);
+            xTimeTakenQuickSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            heapSort(heap_States_30000, heap_States_30000.size(), 1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(heap_States_30000, "heap_States_30000.csv");
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataHeapSort.push_back(30000);
+            xTimeTakenHeapSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            mergeSort(merge_States_30000, 0, merge_States_30000.size() - 1, 1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(merge_States_30000, "merge_States_30000.csv");
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataMergeSort.push_back(30000);
+            xTimeTakenMergeSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_States_30000, lessThan_state);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_States_30000, "shell_States_30000.csv");
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataShellSort.push_back(30000);
+            xTimeTakenShellSort.push_back(duration.count());
+            }
+
+            cout << endl;
+
+            //---------Sorting times for data size FullSize ----------------//
+            cout << "----------Sorting times for data size FullSize----------" << endl;
+
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_States_FullSize, 0, qS_States_FullSize.size() - 1, 1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_States_FullSize, "qS_States_FullSize.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataQuickSort.push_back(emissionData.size());
+            xTimeTakenQuickSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            heapSort(heap_States_FullSize, heap_States_FullSize.size(), 1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(heap_States_FullSize, "heap_States_FullSize.csv");
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataHeapSort.push_back(emissionData.size());
+            xTimeTakenHeapSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            mergeSort(merge_States_FullSize, 0, merge_States_FullSize.size() - 1, 1);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(merge_States_FullSize, "merge_States_FullSize.csv");
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataMergeSort.push_back(emissionData.size());
+            xTimeTakenMergeSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_States_FullSize, lessThan_state);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_States_FullSize, "shell_States_FullSize.csv");
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
             yNumDataShellSort.push_back(emissionData.size());
             xTimeTakenShellSort.push_back(duration.count());
             }
@@ -558,517 +559,382 @@ int main()
             break; //Must be after all of the sorting algorithms have been inserted here
 
 
-
             /*======= Case 2: Sorting by Zip Code =======*/
-
 
         case(2):
 
             cout << "//**********Sorting by Zip Code**********//" << endl;
             cout << endl;
 
-            //---------Sorting times for data size 250 ----------------//
-            cout << "----------Sorting times for data size 250----------" << endl;
-
-            {auto start = high_resolution_clock::now();
-            quickSort(qS_Zip_250, 0, qS_Zip_250.size() - 1, 2);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(qS_Zip_250, "qS_Zip_250.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataQuickSort.push_back(250);
-            xTimeTakenQuickSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            heapSort(heap_Zip_250, heap_Zip_250.size(), 2);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(heap_Zip_250, "heap_Zip_250.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataHeapSort.push_back(250);
-            xTimeTakenHeapSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            mergeSort(merge_Zip_250, 0, merge_Zip_250.size() - 1, 2);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(merge_Zip_250, "merge_Zip_250.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataMergeSort.push_back(250);
-            xTimeTakenMergeSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            Shellsort(shell_Zip_250, lessThan_zipCode);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(shell_Zip_250, "shell_Zip_250.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataShellSort.push_back(250);
-            xTimeTakenShellSort.push_back(duration.count());
-            }
-
-            cout << endl;
-            //---------Sorting times for data size 500 ----------------//
-            cout << "----------Sorting times for data size 500----------" << endl;
-            {auto start = high_resolution_clock::now();
-            quickSort(qS_Zip_500, 0, qS_Zip_500.size() - 1, 2);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(qS_Zip_500, "qS_Zip_500.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataQuickSort.push_back(15000);
-            xTimeTakenQuickSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            heapSort(heap_Zip_500, heap_Zip_500.size(), 2);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(heap_Zip_500, "heap_Zip_500.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataHeapSort.push_back(15000);
-            xTimeTakenHeapSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            mergeSort(merge_Zip_500, 0, merge_Zip_500.size() - 1, 2);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(merge_Zip_500, "merge_Zip_500.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataMergeSort.push_back(15000);
-            xTimeTakenMergeSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            Shellsort(shell_Zip_500, lessThan_zipCode);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(shell_Zip_500, "shell_Zip_500.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataShellSort.push_back(15000);
-            xTimeTakenShellSort.push_back(duration.count());
-            }
-            cout << endl;
-
-            //---------Sorting times for data size 750 ----------------//
-            cout << "----------Sorting times for data size 750----------" << endl;
-            {auto start = high_resolution_clock::now();
-            quickSort(qS_Zip_750, 0, qS_Zip_750.size() - 1, 2);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(qS_Zip_750, "qS_Zip_750.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataQuickSort.push_back(30000);
-            xTimeTakenQuickSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            heapSort(heap_Zip_750, heap_Zip_750.size(), 2);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(heap_Zip_750, "heap_Zip_750.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataHeapSort.push_back(30000);
-            xTimeTakenHeapSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            mergeSort(merge_Zip_750, 0, merge_Zip_750.size() - 1, 2);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(merge_Zip_750, "merge_Zip_750.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataMergeSort.push_back(30000);
-            xTimeTakenMergeSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            Shellsort(shell_Zip_750, lessThan_zipCode);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(shell_Zip_750, "shell_Zip_750.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataShellSort.push_back(30000);
-            xTimeTakenShellSort.push_back(duration.count());
-            }
-            cout << endl;
             //---------Sorting times for data size 1000 ----------------//
             cout << "----------Sorting times for data size 1000----------" << endl;
+
             {auto start = high_resolution_clock::now();
             quickSort(qS_Zip_1000, 0, qS_Zip_1000.size() - 1, 2);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(qS_Zip_1000, "qS_Zip_1000.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataQuickSort.push_back(emissionData.size());
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataQuickSort.push_back(1000);
             xTimeTakenQuickSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
             heapSort(heap_Zip_1000, heap_Zip_1000.size(), 2);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(heap_Zip_1000, "heap_Zip_1000.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataHeapSort.push_back(emissionData.size());
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataHeapSort.push_back(1000);
             xTimeTakenHeapSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
             mergeSort(merge_Zip_1000, 0, merge_Zip_1000.size() - 1, 2);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(merge_Zip_1000, "merge_Zip_1000.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataMergeSort.push_back(emissionData.size());
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataMergeSort.push_back(1000);
             xTimeTakenMergeSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
             Shellsort(shell_Zip_1000, lessThan_zipCode);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(shell_Zip_1000, "shell_Zip_1000.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataShellSort.push_back(emissionData.size());
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataShellSort.push_back(1000);
             xTimeTakenShellSort.push_back(duration.count());
             }
 
             cout << endl;
 
-
-            break; //Must be after all of the sorting algorithms have been inserted here
-
-
-
-            /*======= Case 3: Sorting by City =======*/
-        case(3):
-            cout << "//**********Sorting by City**********//" << endl;
-            cout << endl;
-
-            //---------Sorting times for data size 250 ----------------//
-            cout << "----------Sorting times for data size 250----------" << endl;
-
+            //---------Sorting times for data size 10000 ----------------//
+            cout << "----------Sorting times for data size 10000----------" << endl;
             {auto start = high_resolution_clock::now();
-            quickSort(qS_City_250, 0, qS_City_250.size() - 1, 3);
+            quickSort(qS_Zip_10000, 0, qS_Zip_10000.size() - 1, 2);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(qS_City_250, "qS_City_250.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataQuickSort.push_back(250);
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_Zip_10000, "qS_Zip_10000.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataQuickSort.push_back(10000);
             xTimeTakenQuickSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
-            heapSort(heap_City_250, heap_City_250.size(), 3);
+            heapSort(heap_Zip_10000, heap_Zip_10000.size(), 2);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(heap_City_250, "heap_City_250.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataHeapSort.push_back(250);
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(heap_Zip_10000, "heap_Zip_10000.csv");
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataHeapSort.push_back(10000);
             xTimeTakenHeapSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
-            mergeSort(merge_City_250, 0, merge_City_250.size() - 1, 3);
+            mergeSort(merge_Zip_10000, 0, merge_Zip_10000.size() - 1, 2);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(merge_City_250, "merge_City_250.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataMergeSort.push_back(250);
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(merge_Zip_10000, "merge_Zip_10000.csv");
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataMergeSort.push_back(10000);
             xTimeTakenMergeSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
-            Shellsort(shell_City_250, lessThan_City);
+            Shellsort(shell_Zip_10000, lessThan_zipCode);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(shell_City_250, "shell_City_250.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataShellSort.push_back(250);
-            xTimeTakenShellSort.push_back(duration.count());
-            }
-
-            cout << endl;
-
-            //---------Sorting times for data size 500 ----------------//
-            cout << "----------Sorting times for data size 500----------" << endl;
-
-            {auto start = high_resolution_clock::now();
-            quickSort(qS_City_500, 0, qS_City_500.size() - 1, 3);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(qS_City_500, "qS_City_500.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataQuickSort.push_back(15000);
-            xTimeTakenQuickSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            heapSort(heap_City_500, heap_City_500.size(), 3);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(heap_City_500, "heap_City_500.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataHeapSort.push_back(15000);
-            xTimeTakenHeapSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            mergeSort(merge_City_500, 0, merge_City_500.size() - 1, 3);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(merge_City_500, "merge_City_500.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataMergeSort.push_back(15000);
-            xTimeTakenMergeSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            Shellsort(shell_City_500, lessThan_City);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(shell_City_500, "shell_City_500.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataShellSort.push_back(15000);
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_Zip_10000, "shell_Zip_10000.csv");
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataShellSort.push_back(10000);
             xTimeTakenShellSort.push_back(duration.count());
             }
             cout << endl;
-            //---------Sorting times for data size 750 ----------------//
-            cout << "----------Sorting times for data size 750----------" << endl;
 
+            //---------Sorting times for data size 30000 ----------------//
+            cout << "----------Sorting times for data size 30000----------" << endl;
             {auto start = high_resolution_clock::now();
-            quickSort(qS_City_750, 0, qS_City_750.size() - 1, 3);
+            quickSort(qS_Zip_30000, 0, qS_Zip_30000.size() - 1, 2);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(qS_City_750, "qS_City_750.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_Zip_30000, "qS_Zip_30000.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
             yNumDataQuickSort.push_back(30000);
             xTimeTakenQuickSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
-            heapSort(heap_City_750, heap_City_750.size(), 3);
+            heapSort(heap_Zip_30000, heap_Zip_30000.size(), 2);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(heap_City_750, "heap_City_750.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(heap_Zip_30000, "heap_Zip_30000.csv");
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
             yNumDataHeapSort.push_back(30000);
             xTimeTakenHeapSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
-            mergeSort(merge_City_750, 0, merge_City_750.size() - 1, 3);
+            mergeSort(merge_Zip_30000, 0, merge_Zip_30000.size() - 1, 2);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(merge_City_750, "merge_City_750.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(merge_Zip_30000, "merge_Zip_30000.csv");
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
             yNumDataMergeSort.push_back(30000);
             xTimeTakenMergeSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
-            Shellsort(shell_City_750, lessThan_City);
+            Shellsort(shell_Zip_30000, lessThan_zipCode);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(shell_City_750, "shell_City_750.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_Zip_30000, "shell_Zip_30000.csv");
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
             yNumDataShellSort.push_back(30000);
             xTimeTakenShellSort.push_back(duration.count());
             }
             cout << endl;
+
+            //---------Sorting times for data size FullSize ----------------//
+            cout << "----------Sorting times for data size FullSize----------" << endl;
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_Zip_FullSize, 0, qS_Zip_FullSize.size() - 1, 2);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_Zip_FullSize, "qS_Zip_FullSize.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataQuickSort.push_back(emissionData.size());
+            xTimeTakenQuickSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            heapSort(heap_Zip_FullSize, heap_Zip_FullSize.size(), 2);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(heap_Zip_FullSize, "heap_Zip_FullSize.csv");
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataHeapSort.push_back(emissionData.size());
+            xTimeTakenHeapSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            mergeSort(merge_Zip_FullSize, 0, merge_Zip_FullSize.size() - 1, 2);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(merge_Zip_FullSize, "merge_Zip_FullSize.csv");
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataMergeSort.push_back(emissionData.size());
+            xTimeTakenMergeSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_Zip_FullSize, lessThan_zipCode);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_Zip_FullSize, "shell_Zip_FullSize.csv");
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataShellSort.push_back(emissionData.size());
+            xTimeTakenShellSort.push_back(duration.count());
+            }
+
+            cout << endl;
+            break; //Must be after all of the sorting algorithms have been inserted here
+
+
+            /*======= Case 3: Sorting by City =======*/
+
+        case(3):
+
+            cout << "//**********Sorting by City**********//" << endl;
+            cout << endl;
+
             //---------Sorting times for data size 1000 ----------------//
             cout << "----------Sorting times for data size 1000----------" << endl;
 
             {auto start = high_resolution_clock::now();
             quickSort(qS_City_1000, 0, qS_City_1000.size() - 1, 3);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(qS_City_1000, "qS_City_1000.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataQuickSort.push_back(emissionData.size());
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataQuickSort.push_back(1000);
             xTimeTakenQuickSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
             heapSort(heap_City_1000, heap_City_1000.size(), 3);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(heap_City_1000, "heap_City_1000.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataHeapSort.push_back(emissionData.size());
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataHeapSort.push_back(1000);
             xTimeTakenHeapSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
             mergeSort(merge_City_1000, 0, merge_City_1000.size() - 1, 3);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(merge_City_1000, "merge_City_1000.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataMergeSort.push_back(emissionData.size());
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataMergeSort.push_back(1000);
             xTimeTakenMergeSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
             Shellsort(shell_City_1000, lessThan_City);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(shell_City_1000, "shell_City_1000.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataShellSort.push_back(emissionData.size());
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataShellSort.push_back(1000);
             xTimeTakenShellSort.push_back(duration.count());
             }
 
             cout << endl;
 
-
-            break; //Must be after all of the sorting algorithms have been inserted here
-
-
-
-            /*======= Case 4: Sorting by Emission Amount =======*/
-        case(4):
-            cout << "//**********Sorting by Emission Amount**********//" << endl;
-            cout << endl;
-
-            //---------Sorting times for data size 250 ----------------//
-            cout << "----------Sorting times for data size 250----------" << endl;
+            //---------Sorting times for data size 10000 ----------------//
+            cout << "----------Sorting times for data size 10000----------" << endl;
 
             {auto start = high_resolution_clock::now();
-            quickSort(qS_Amount_250, 0, qS_Amount_250.size() - 1, 4);
+            quickSort(qS_City_10000, 0, qS_City_10000.size() - 1, 3);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(qS_Amount_250, "qS_Amount_250.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataQuickSort.push_back(250);
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_City_10000, "qS_City_10000.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataQuickSort.push_back(10000);
             xTimeTakenQuickSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
-            heapSort(heap_Amount_250, heap_Amount_250.size(), 4);
+            heapSort(heap_City_10000, heap_City_10000.size(), 3);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(heap_Amount_250, "heap_Amount_250.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataHeapSort.push_back(250);
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(heap_City_10000, "heap_City_10000.csv");
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataHeapSort.push_back(10000);
             xTimeTakenHeapSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
-            mergeSort(merge_City_250, 0, merge_City_250.size() - 1, 4);
+            mergeSort(merge_City_10000, 0, merge_City_10000.size() - 1, 3);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(merge_City_250, "merge_City_250.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataMergeSort.push_back(250);
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(merge_City_10000, "merge_City_10000.csv");
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataMergeSort.push_back(10000);
             xTimeTakenMergeSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
-            Shellsort(shell_Amount_250, lessThan_totalRelease);
+            Shellsort(shell_City_10000, lessThan_City);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(shell_Amount_250, "shell_Amount_250.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataShellSort.push_back(250);
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_City_10000, "shell_City_10000.csv");
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataShellSort.push_back(10000);
             xTimeTakenShellSort.push_back(duration.count());
             }
-
             cout << endl;
 
-            //---------Sorting times for data size 500 ----------------//
-            cout << "----------Sorting times for data size 500----------" << endl;
+            //---------Sorting times for data size 30000 ----------------//
+            cout << "----------Sorting times for data size 30000----------" << endl;
 
             {auto start = high_resolution_clock::now();
-            quickSort(qS_Amount_500, 0, qS_Amount_500.size() - 1, 4);
+            quickSort(qS_City_30000, 0, qS_City_30000.size() - 1, 3);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(qS_Amount_500, "qS_Amount_500.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataQuickSort.push_back(15000);
-            xTimeTakenQuickSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            heapSort(heap_Amount_500, heap_Amount_500.size(), 4);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(heap_Amount_500, "heap_Amount_500.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataHeapSort.push_back(15000);
-            xTimeTakenHeapSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            mergeSort(merge_City_500, 0, merge_City_500.size() - 1, 4);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(merge_City_500, "merge_City_500.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataMergeSort.push_back(15000);
-            xTimeTakenMergeSort.push_back(duration.count());
-            }
-
-            {auto start = high_resolution_clock::now();
-            Shellsort(shell_Amount_500, lessThan_totalRelease);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(shell_Amount_500, "shell_Amount_500.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataShellSort.push_back(15000);
-            xTimeTakenShellSort.push_back(duration.count());
-            }
-
-            cout << endl;
-
-            //---------Sorting times for data size 750 ----------------//
-            cout << "----------Sorting times for data size 750----------" << endl;
-
-            {auto start = high_resolution_clock::now();
-            quickSort(qS_Amount_750, 0, qS_Amount_750.size() - 1, 4);
-            auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(qS_Amount_750, "qS_Amount_750.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_City_30000, "qS_City_30000.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
             yNumDataQuickSort.push_back(30000);
             xTimeTakenQuickSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
-            heapSort(heap_Amount_750, heap_Amount_750.size(), 4);
+            heapSort(heap_City_30000, heap_City_30000.size(), 3);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(heap_Amount_750, "heap_Amount_750.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(heap_City_30000, "heap_City_30000.csv");
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
             yNumDataHeapSort.push_back(30000);
             xTimeTakenHeapSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
-            mergeSort(merge_City_750, 0, merge_City_750.size() - 1, 4);
+            mergeSort(merge_City_30000, 0, merge_City_30000.size() - 1, 3);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(merge_City_750, "merge_City_750.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(merge_City_30000, "merge_City_30000.csv");
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
             yNumDataMergeSort.push_back(30000);
             xTimeTakenMergeSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
-            Shellsort(shell_Amount_750, lessThan_totalRelease);
+            Shellsort(shell_City_30000, lessThan_City);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
-            writeFile(shell_Amount_750, "shell_Amount_750.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_City_30000, "shell_City_30000.csv");
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
             yNumDataShellSort.push_back(30000);
             xTimeTakenShellSort.push_back(duration.count());
             }
+            cout << endl;
 
+            //---------Sorting times for data size FullSize ----------------//
+            cout << "----------Sorting times for data size FullSize----------" << endl;
+
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_City_FullSize, 0, qS_City_FullSize.size() - 1, 3);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_City_FullSize, "qS_City_FullSize.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataQuickSort.push_back(emissionData.size());
+            xTimeTakenQuickSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            heapSort(heap_City_FullSize, heap_City_FullSize.size(), 3);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(heap_City_FullSize, "heap_City_FullSize.csv");
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataHeapSort.push_back(emissionData.size());
+            xTimeTakenHeapSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            mergeSort(merge_City_FullSize, 0, merge_City_FullSize.size() - 1, 3);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(merge_City_FullSize, "merge_City_FullSize.csv");
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataMergeSort.push_back(emissionData.size());
+            xTimeTakenMergeSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_City_FullSize, lessThan_City);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_City_FullSize, "shell_City_FullSize.csv");
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataShellSort.push_back(emissionData.size());
+            xTimeTakenShellSort.push_back(duration.count());
+            }
+
+            cout << endl;
+            break; //Must be after all of the sorting algorithms have been inserted here
+
+
+            /*======= Case 4: Sorting by Emission Amount =======*/
+
+        case(4):
+
+            cout << "//**********Sorting by Emission Amount**********//" << endl;
             cout << endl;
 
             //---------Sorting times for data size 1000 ----------------//
@@ -1077,46 +943,179 @@ int main()
             {auto start = high_resolution_clock::now();
             quickSort(qS_Amount_1000, 0, qS_Amount_1000.size() - 1, 4);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(qS_Amount_1000, "qS_Amount_1000.csv");
-            cout << "1. Quick Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataQuickSort.push_back(emissionData.size());
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataQuickSort.push_back(1000);
             xTimeTakenQuickSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
             heapSort(heap_Amount_1000, heap_Amount_1000.size(), 4);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(heap_Amount_1000, "heap_Amount_1000.csv");
-            cout << "2. Heap Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataHeapSort.push_back(emissionData.size());
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataHeapSort.push_back(1000);
             xTimeTakenHeapSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
             mergeSort(merge_City_1000, 0, merge_City_1000.size() - 1, 4);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(merge_City_1000, "merge_City_1000.csv");
-            cout << "3. Merge Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataMergeSort.push_back(emissionData.size());
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataMergeSort.push_back(1000);
             xTimeTakenMergeSort.push_back(duration.count());
             }
 
             {auto start = high_resolution_clock::now();
             Shellsort(shell_Amount_1000, lessThan_totalRelease);
             auto stop = high_resolution_clock::now();
-            auto duration = duration_cast<milliseconds>(stop - start);
+            auto duration = duration_cast<microseconds>(stop - start);
             writeFile(shell_Amount_1000, "shell_Amount_1000.csv");
-            cout << "4. Shell Sort: " << duration.count() << " milliseconds" << endl;
-            yNumDataShellSort.push_back(emissionData.size());
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataShellSort.push_back(1000);
             xTimeTakenShellSort.push_back(duration.count());
             }
 
             cout << endl;
 
+            //---------Sorting times for data size 10000 ----------------//
+            cout << "----------Sorting times for data size 10000----------" << endl;
 
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_Amount_10000, 0, qS_Amount_10000.size() - 1, 4);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_Amount_10000, "qS_Amount_10000.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataQuickSort.push_back(10000);
+            xTimeTakenQuickSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            heapSort(heap_Amount_10000, heap_Amount_10000.size(), 4);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(heap_Amount_10000, "heap_Amount_10000.csv");
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataHeapSort.push_back(10000);
+            xTimeTakenHeapSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            mergeSort(merge_City_10000, 0, merge_City_10000.size() - 1, 4);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(merge_City_10000, "merge_City_10000.csv");
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataMergeSort.push_back(10000);
+            xTimeTakenMergeSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_Amount_10000, lessThan_totalRelease);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_Amount_10000, "shell_Amount_10000.csv");
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataShellSort.push_back(10000);
+            xTimeTakenShellSort.push_back(duration.count());
+            }
+
+            cout << endl;
+
+            //---------Sorting times for data size 30000 ----------------//
+            cout << "----------Sorting times for data size 30000----------" << endl;
+
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_Amount_30000, 0, qS_Amount_30000.size() - 1, 4);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_Amount_30000, "qS_Amount_30000.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataQuickSort.push_back(30000);
+            xTimeTakenQuickSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            heapSort(heap_Amount_30000, heap_Amount_30000.size(), 4);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(heap_Amount_30000, "heap_Amount_30000.csv");
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataHeapSort.push_back(30000);
+            xTimeTakenHeapSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            mergeSort(merge_City_30000, 0, merge_City_30000.size() - 1, 4);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(merge_City_30000, "merge_City_30000.csv");
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataMergeSort.push_back(30000);
+            xTimeTakenMergeSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_Amount_30000, lessThan_totalRelease);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_Amount_30000, "shell_Amount_30000.csv");
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataShellSort.push_back(30000);
+            xTimeTakenShellSort.push_back(duration.count());
+            }
+
+            cout << endl;
+
+            //---------Sorting times for data size FullSize ----------------//
+            cout << "----------Sorting times for data size FullSize----------" << endl;
+
+            {auto start = high_resolution_clock::now();
+            quickSort(qS_Amount_FullSize, 0, qS_Amount_FullSize.size() - 1, 4);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(qS_Amount_FullSize, "qS_Amount_FullSize.csv");
+            cout << "1. Quick Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataQuickSort.push_back(emissionData.size());
+            xTimeTakenQuickSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            heapSort(heap_Amount_FullSize, heap_Amount_FullSize.size(), 4);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(heap_Amount_FullSize, "heap_Amount_FullSize.csv");
+            cout << "2. Heap Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataHeapSort.push_back(emissionData.size());
+            xTimeTakenHeapSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            mergeSort(merge_City_FullSize, 0, merge_City_FullSize.size() - 1, 4);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(merge_City_FullSize, "merge_City_FullSize.csv");
+            cout << "3. Merge Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataMergeSort.push_back(emissionData.size());
+            xTimeTakenMergeSort.push_back(duration.count());
+            }
+
+            {auto start = high_resolution_clock::now();
+            Shellsort(shell_Amount_FullSize, lessThan_totalRelease);
+            auto stop = high_resolution_clock::now();
+            auto duration = duration_cast<microseconds>(stop - start);
+            writeFile(shell_Amount_FullSize, "shell_Amount_FullSize.csv");
+            cout << "4. Shell Sort: " << duration.count() << " microseconds" << endl;
+            yNumDataShellSort.push_back(emissionData.size());
+            xTimeTakenShellSort.push_back(duration.count());
+            }
+
+            cout << endl;
             break; //Must be after all of the sorting algorithms have been inserted here
 
         case(5):
@@ -1127,7 +1126,7 @@ int main()
             break;
         }
 
-        if (option < 5 && option > 0) {
+        if (option < 5 && option > 0) { //Implementation of Graph Functionality
             plt::plot(yNumDataQuickSort, xTimeTakenQuickSort);
             plt::named_plot("Quick Sort", yNumDataQuickSort, xTimeTakenQuickSort);
             plt::plot(yNumDataHeapSort, xTimeTakenHeapSort, "b-");
@@ -1158,6 +1157,8 @@ int main()
                 break;
             }
             plt::title("Emissions Sort - " + nameOfTest);
+            plt::xlabel("Time (microseconds)");
+            plt::ylabel("Data Size");
             plt::save(nameFile);
             plt::show();
         }
