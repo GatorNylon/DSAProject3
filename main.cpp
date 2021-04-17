@@ -1073,7 +1073,7 @@ int main()
             cout << endl;
 
             //---------Sorting times for data size FullSize ----------------//
-            cout << "----------Sorting times for data size FullSize----------" << endl;
+            cout << "----------Sorting times for data size " emissionData.size()"----------" << endl;
 
             {auto start = high_resolution_clock::now();
             quickSort(qS_Amount_FullSize, 0, qS_Amount_FullSize.size() - 1, 4);
